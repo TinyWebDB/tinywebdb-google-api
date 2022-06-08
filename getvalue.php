@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<title>Google APIを使って商品検索するサンプルコード</title>
-<meta charset="utf-8">
-<!-- Bootstrap読み込み（スタイリングのため） -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-</head>
-<body>
-
 <?php
-
 //checks ifthe tag post is there and if its been a proper form post
 // tagで検索
-if(isset($_POST['tag']) && ($_SERVER['CONTENT_TYPE'] == "application/x-www-form-urlencoded")){
-	ItemSearch("Books", $_POST['tag']);
+if(isset($_REQUEST['tag']) ){
+	ItemSearch("Books", $_REQUEST['tag']);
 }
 
 //Set up the operation in the request
@@ -39,7 +28,4 @@ function ItemSearch($SearchIndex, $Keywords){
 	} // foreach end
 
         echo json_encode(array("VALUE", $Keywords, $tagValue));
-} ?>
-
-</body>
-</html>
+} 
